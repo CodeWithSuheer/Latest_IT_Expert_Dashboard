@@ -142,7 +142,7 @@ const Dashboard = () => {
                 {/* <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Email</th> */}
                 {/* <th className="py-4 px-2 md:text-md lg:text-md font-medium">Company</th> */}
                 <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Message</th>
-                <th className="py-4 pl-12 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
                   Actions
                 </th>
               </tr>
@@ -158,7 +158,7 @@ const Dashboard = () => {
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{startIndex + idx + 1}</td>
 
                         <td className="gap-x-3 px-6 whitespace-nowrap w-72">
-                        <span className="text-gray-700 text-lg font-medium capitalize">
+                        <span className="text-gray-700 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium capitalize">
                           {data.name}
                         </span>{" "}
                         <br />
@@ -166,12 +166,12 @@ const Dashboard = () => {
                           {data.email}
                         </span>
                       </td>
-                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{new Date(data.createdAt).toLocaleDateString()}</td>
-                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.refNumber}</td>
+                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{new Date(data.createdAt).toLocaleDateString()}</td>
+                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.refNumber}</td>
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.phone}</td>
                         {/* <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.email}</td> */}
                         <td className="pr-1 py-3 pl-6 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60 font-semibold underline underline-offset-4 text-[#F11900]" onClick={() => onClickTwo(data.id)}>View Now</td>
-                        <td className="pr-14 flex items-center justify-center py-3">
+                        <td className="pr-10 mr-10 flex items-center justify-center py-3">
                           <div className="trash_button rounded-full bg-[#F7F7F7] text-black p-2 ms-2.5 transition hover:scale-110"
                             onClick={() => onClickErrorModal(data.id)}
                           >
