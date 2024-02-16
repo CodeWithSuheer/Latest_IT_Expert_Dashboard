@@ -65,7 +65,7 @@ const AddProjects = () => {
     console.log("formData", formData);
     dispatch(createProjectsAsync(formData)).then(() => {
       dispatch(getAllProjectsAsync());
-      // navigate("/adminpanel/projects");
+      navigate("/adminpanel/projects");
     });
   };
 

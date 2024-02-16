@@ -171,7 +171,7 @@ const Dashboard = () => {
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.phone}</td>
                         {/* <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.email}</td> */}
                         <td className="pr-1 py-3 pl-6 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60 font-semibold underline underline-offset-4 text-[#F11900]" onClick={() => onClickTwo(data.id)}>View Now</td>
-                        <td className="pr-10 mr-10 flex items-center justify-center py-3">
+                        <td className="pr-10 mr-10 flex items-center justify-center py-3 w-44">
                           <div className="trash_button rounded-full bg-[#F7F7F7] text-black p-2 ms-2.5 transition hover:scale-110"
                             onClick={() => onClickErrorModal(data.id)}
                           >

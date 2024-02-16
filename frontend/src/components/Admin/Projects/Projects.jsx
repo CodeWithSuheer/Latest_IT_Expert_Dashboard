@@ -92,8 +92,7 @@ const Projects = () => {
                 activeTab === "all"
                   ? "bg-[#F11900] text-white"
                   : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-              } rounded-md mr-5`}
-              style={{ padding: "8px 25px" }}
+              } rounded-md  text-md md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
               onClick={handleAllProjectFilter}
             >
               All
@@ -103,22 +102,20 @@ const Projects = () => {
                 activeTab === "ongoingProject"
                   ? "bg-[#F11900] text-white"
                   : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-              } rounded-md mr-5`}
-              style={{ padding: "8px 25px" }}
+              } rounded-md  text-md md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
               onClick={handleOngoingFilter}
             >
-              Ongoing Projects
+              Ongoing
             </button>
             <button
               className={`${
                 activeTab === "completedProject"
                   ? "bg-[#F11900] text-white"
                   : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-              } rounded-md mr-5`}
-              style={{ padding: "8px 25px" }}
+              } rounded-md  text-md md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
               onClick={handleCompletedFilter}
             >
-              Complete Projects
+              Completed
             </button>
           </div>
 
