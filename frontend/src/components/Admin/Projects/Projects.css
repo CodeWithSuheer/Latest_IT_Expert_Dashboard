@@ -1,0 +1,14 @@
+.requests {
+  cursor: pointer;
+  transition: all 0.4s;
+  background-color: #fff;
+}
+.requests:hover {
+  transform: translateY(-4px);
+}
+
+.project_input:-webkit-autofill {
+  -webkit-text-fill-color: #313233 !important;
+  -webkit-box-shadow: 0 0 0 1000px #f3f4f6 inset !important;
+  background-color: #f3f4f6 !important;
+}

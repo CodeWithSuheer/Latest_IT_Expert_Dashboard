@@ -1,0 +1,32 @@
+.details_left,
+.details_right {
+  height: 22rem;
+  width: 80%;
+  margin-inline: 2rem;
+  padding-block: 2rem;
+  padding-inline: 2rem;
+}
+
+.details_left h2,
+.details_right h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.details_left p,
+.details_right p {
+  font-size: 1.3rem;
+  font-weight: 400 !important;
+  padding-block: 0.3rem;
+}
+
+.detail_line {
+  font-size: 1.15rem;
+  font-weight: 400 !important;
+  padding-block: 0.5rem;
+}
+
+.detail_line_title {
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
