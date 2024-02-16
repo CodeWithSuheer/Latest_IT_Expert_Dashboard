@@ -47,11 +47,13 @@ const AllInvoices = () => {
     return null;
   }).filter(Boolean);
 
-  // console.log("Selected Data", selectedData);
+
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
+
+ 
 
   // THESE STATE ARE RELATED TO PAGINATION
   const [limit, setLimit] = useState(7);
@@ -136,6 +138,34 @@ const AllInvoices = () => {
     setFilterdByStatus(data);
     setActiveTab("all");
   };
+
+
+  useEffect(() => {
+    let searchData = [];
+  
+    if (searchQuery) {
+      searchData = InvoicesData.filter(
+        (data) =>
+          data.customerId.toString().includes(searchQuery.toLowerCase()) ||
+          data.orderId.toString().includes(searchQuery.toLowerCase())
+      );
+  
+      if (searchQuery.length > 1) {
+        setFilterdByStatus(searchData);
+      }
+    } else {
+      
+      setFilterdByStatus(InvoicesData);
+    }
+  }, [searchQuery, InvoicesData]);
+
+  
+  
+  
+
+  
+
+  
 
   return (
     <>
@@ -248,7 +278,7 @@ const AllInvoices = () => {
             </thead>
             {/* ------------- TABLE BODY ------------- */}
             <tbody className="text-gray-600 divide-y">
-              {filterdByStatus.map((data, index) => (
+              { filterdByStatus.map((data, index) => (
                 <React.Fragment key={index}>
                   {data.invoices.map((invoice, invoiceIndex) => (
                     <tr
