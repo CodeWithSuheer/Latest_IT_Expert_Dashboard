@@ -7,6 +7,7 @@ const Projects = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   // CALL TO GET ALL INVOICES
   useEffect(() => {
@@ -15,7 +16,6 @@ const Projects = () => {
 
   // HERE WE GET DATA USING USESELECTOR FROM STATE
   const ProjectsData = useSelector((state) => state.project.allProjects);
-  // console.log("ProjectsData", ProjectsData);
 
   const [filteredProjects, setFilteredProjects] = useState(ProjectsData);
 
@@ -37,6 +37,30 @@ const Projects = () => {
   useEffect(() => {
     setFilteredProjects(ProjectsData);
   }, [ProjectsData]);
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  useEffect(() => {
+    let searchData = [];
+  
+    if (searchQuery) {
+      searchData = ProjectsData.filter(
+        (data) =>
+          data.customerId.toString().includes(searchQuery.toLowerCase()) ||
+          data.orderId.toString().includes(searchQuery.toLowerCase()) ||
+          data.customerName.toLowerCase().includes(searchQuery.toLowerCase()) 
+      );
+  
+      if (searchQuery.length > 1) {
+        setFilteredProjects(searchData);
+      }
+    } else {
+      
+      setFilteredProjects(ProjectsData);
+    }
+  }, [searchQuery, ProjectsData]);
 
   return (
     <>
@@ -119,8 +143,8 @@ const Projects = () => {
 
               <input
                 type="text"
-                //value={searchQuery}
-                //onChange={handleSearch}
+                value={searchQuery}
+                onChange={handleSearch}
                 className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-[#D9D9D9] rounded-lg focus:border-red-400 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-red-300"
                 placeholder="Search name & email"
               />

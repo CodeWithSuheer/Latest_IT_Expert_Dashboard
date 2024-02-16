@@ -147,7 +147,8 @@ const AllInvoices = () => {
       searchData = InvoicesData.filter(
         (data) =>
           data.customerId.toString().includes(searchQuery.toLowerCase()) ||
-          data.orderId.toString().includes(searchQuery.toLowerCase())
+          data.orderId.toString().includes(searchQuery.toLowerCase()) ||
+          data.invoices[0].to.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
   
       if (searchQuery.length > 1) {
