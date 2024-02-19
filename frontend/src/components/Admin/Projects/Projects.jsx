@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllProjectsAsync } from "../../../features/ProjectSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Spinner } from "keep-react";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const Projects = () => {
 
   // HERE WE GET DATA USING USESELECTOR FROM STATE
   const ProjectsData = useSelector((state) => state.project.allProjects);
+  const loading = useSelector((state) => state.project.loading);
+
 
   const [filteredProjects, setFilteredProjects] = useState(ProjectsData);
 
@@ -62,6 +65,8 @@ const Projects = () => {
     }
   }, [searchQuery, ProjectsData]);
 
+
+  
   return (
     <>
       <div className="py-10 px-4 md:px-8 rounded-md bg-white">
@@ -149,6 +154,13 @@ const Projects = () => {
           </div>
         </div>
 
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
+
         <div className="mt-12 relative h-max overflow-auto">
           <table className="w-full table-auto text-md text-left overflow-auto">
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
@@ -167,7 +179,8 @@ const Projects = () => {
               </tr>
             </thead>
             <tbody className="text-gray-600 divide-y">
-              {filteredProjects.map((data, idx) => (
+
+{             filteredProjects.map((data, idx) => (
                 <tr key={idx}>
                   <td className="px-6 py-4 ">{idx + 1}</td>
                   <td className="px-6 py-4 ">{data.customerName}</td>
@@ -195,20 +208,31 @@ const Projects = () => {
                       {data.paymentStatus}
                     </span>
                   </td>
+
+
                   <td className="px-6 py-4">
+                    <td   className="bg-[#f11900] text-white text-sm px-4 py-2 rounded-lg cursor-pointer">  
                     <Link
                       to={`/adminpanel/projectdetails/${data.id}`}
                       onClick={() => window.scroll(0, 0)}
-                      className="bg-[#f11900] text-white text-sm px-3 py-2 rounded-lg"
+                    
+                    
                     >
                       View Details
                     </Link>
                   </td>
-                </tr>
-              ))}
+                  </td>
+              </tr>
+              ))
+                    }
+
+
             </tbody>
           </table>
         </div>
+
+  )}
+
       </div>
     </>
   );

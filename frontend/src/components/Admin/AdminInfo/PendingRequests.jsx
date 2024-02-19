@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Modal, Button } from "keep-react";
+import { Modal, Button, Spinner } from "keep-react";
 import { Trash } from "phosphor-react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,6 +18,8 @@ const PendingRequests = () => {
   const allUsers = useSelector((state) => state.adminInfo.allUsers).filter(
     (ele) => !ele.isAuthenticated
   );
+
+  const loading = useSelector((state) => state.adminInfo.loading)
 
   const handleApprove = (id) => {
     dispatch(authorizeUserAsync(id)).then(() => {
@@ -57,6 +59,14 @@ const PendingRequests = () => {
           </div>
           {/* <div className="mt-3 md:mt-0"></div> */}
         </div>
+
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
+
         <div className="mt-12 relative h-max">
           <table className="w-full table-auto text-sm text-left">
             <thead className="text-gray-600 font-medium border-b">
@@ -95,6 +105,10 @@ const PendingRequests = () => {
             </tbody>
           </table>
         </div>
+
+  )}
+
+        
       </div>
 
       {/* ------------- DELETE MESSAGE MODAL ------------- */}

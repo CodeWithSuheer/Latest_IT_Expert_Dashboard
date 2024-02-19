@@ -8,6 +8,7 @@ import {
   getAllFormsAsync,
 } from "../../../features/contactFormSlice";
 import "./Dashboard.css";
+import { Spinner } from "keep-react";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const DashboardData = useSelector((state) => state.contactForms.allForms);
-
+const  loading = useSelector((state) => state.contactForms.loading);
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -96,6 +97,7 @@ const Dashboard = () => {
                 ({DashboardData.length})
               </span>
             </h3>
+         
           </div>
           <div className="mt-3 md:mt-0 flex gap-8">
             {/* ------------- SEARCH BAR ------------- */}
@@ -129,8 +131,18 @@ const Dashboard = () => {
           </div>
         </div>
 
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
+
         <div className="mt-12 relative h-max overflow-x-auto">
           {/* ------------- CONTACT QUERIES TABLE ------------- */}
+
+    
+
           <table className="contact_table w-full table-auto text-sm text-left overflow-x-auto">
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
               <tr>
@@ -208,8 +220,18 @@ const Dashboard = () => {
               )}
             </tbody>
           </table>
+
+ 
+
         </div>
+
+)}
       </div>
+
+
+
+
+
       {/* -------------- PAGINATION -------------- */}
       <div className=" flex justify-center mt-5 mb-5">
         <nav aria-label="Page navigation example">

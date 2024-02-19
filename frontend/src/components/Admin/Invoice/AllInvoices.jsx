@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Trash, PencilSimple } from "phosphor-react";
-import { Modal, Button, Tooltip } from "keep-react";
+import { Modal, Button, Tooltip, Spinner } from "keep-react";
 import { X } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +30,7 @@ const AllInvoices = () => {
 
   // HERE WE GET DATA USING USESELECTOR FROM STATE
   const InvoicesData = useSelector((state) => state.invoice.allInvoices);
+  const loading = useSelector((state) => state.invoice.loading);
 
   const Modal_id = InvoicesData.filter((data) => data.id === selectedObjectId);
 
@@ -260,9 +261,25 @@ const AllInvoices = () => {
           </button>
         </div>
 
-        {/* ------------- TABLE ------------- */}
+
+
+
+
+
+
+         {/* ------------- TABLE ------------- */}
+
+
+         
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
         <div className="-mt-2 relative h-max overflow-auto">
-          {/* ------------- TABLE ------------- */}
+      
+
+
           <table className="w-full table-auto text-sm text-left">
             {/* ------------- TABLE HEAD ------------- */}
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
@@ -279,7 +296,14 @@ const AllInvoices = () => {
             </thead>
             {/* ------------- TABLE BODY ------------- */}
             <tbody className="text-gray-600 divide-y">
-              { filterdByStatus.map((data, index) => (
+
+{ 
+
+
+              filterdByStatus.map((data, index) => (
+
+
+
                 <React.Fragment key={index}>
                   {data.invoices.map((invoice, invoiceIndex) => (
                     <tr
@@ -347,18 +371,29 @@ const AllInvoices = () => {
                   ))}
                 </React.Fragment>
               ))}
+                          
+
+
               {/* If no data is available */}
               {InvoicesData.length === 0 && (
                 <tr>
-                  <td className="px-6 py-4 text-lg text-gray-950">
+                  <td className="pl-6 py-3 text-lg">
+              
                     No data available
+                
                   </td>
                 </tr>
               )}
             </tbody>
           </table>
+
+
+
         </div>
+          )}
       </div>
+
+
 
       {/* --------------- PAGINATION --------------- */}
       {/* <div className=" flex justify-center mt-5 mb-5">

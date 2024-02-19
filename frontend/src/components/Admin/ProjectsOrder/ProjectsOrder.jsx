@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { X, FileArrowDown } from "phosphor-react";
-import { Modal, Button, Tooltip } from "keep-react";
+import { Modal, Button, Tooltip, Spinner } from "keep-react";
 import { getAllProjectOrderAsync } from "../../../features/projectorderSlice";
 
 const ProjectsOrder = () => {
@@ -13,7 +13,11 @@ const ProjectsOrder = () => {
     (state) => state.projectorder.AllProjectOrder
   );
 
-  // console.log("ProjectOrders", ProjectOrders);
+
+  const loading = useSelector(
+    (state) => state.projectorder.loading
+  );
+
 
   useEffect(() => {
     dispatch(getAllProjectOrderAsync());
@@ -48,6 +52,13 @@ const ProjectsOrder = () => {
             </h3>
           </div>
         </div>
+
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
 
         <div className="mt-12 relative h-max overflow-auto">
           <table className="w-full table-auto text-md text-left overflow-auto">
@@ -86,6 +97,11 @@ const ProjectsOrder = () => {
             </tbody>
           </table>
         </div>
+
+  )}
+
+
+
       </div>
 
       {/* MODAL */}

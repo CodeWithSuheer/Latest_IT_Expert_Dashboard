@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown } from "keep-react";
+import { Dropdown, Spinner } from "keep-react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllUsersAsync,
@@ -17,6 +17,9 @@ const ApprovedRequests = () => {
 
 
   const approvedUsers = useSelector((state) => state.adminInfo.allUsers).filter((ele) => ele.isAuthenticated && ele.id !== "659d33bad568c4d134b6aed3");
+  
+  const loading = useSelector((state) => state.adminInfo.loading)
+
 
   // HANDLE ROLE UPDATE
   const handleUnauthorize = (id) => {
@@ -57,6 +60,17 @@ const ApprovedRequests = () => {
             </p>
           </div>
         </div>
+
+
+
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
+
+
         <div className="mt-12 relative h-max">
           <table className="w-full table-auto text-sm text-left">
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
@@ -109,6 +123,9 @@ const ApprovedRequests = () => {
             </tbody>
           </table>
         </div>
+      
+  )}
+      
       </div>
     </>
   );

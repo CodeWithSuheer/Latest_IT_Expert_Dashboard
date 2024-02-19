@@ -58,6 +58,8 @@ const AdminBody = () => {
     <>
       <div className="adminBody bg-slate-300 px-0">
         {/* ------------ DASHBOARD SIDE MENU ------------  */}
+
+        
         <div className="admin_sideMenu">
           <Sidebar
             className="pt-6"
@@ -208,55 +210,7 @@ const AdminBody = () => {
                 </Sidebar.Item>
               </Link>
 
-              {/* -------- PROJECTS --------  */}
-              {/* <Sidebar.Collapse
-                icon={<Browsers size={24} />}
-                label="Projects"
-                style={{ fontSize: "1.125rem" }}
-              >
-                <Link to="/adminpanel/ongoingprojects">
-                  <Sidebar.Item
-                    icon={
-                      <Clock
-                        size={24}
-                        className={` ${
-                          location.pathname === "/adminpanel/ongoingprojects"
-                            ? "text-white"
-                            : ""
-                        }`}
-                      />
-                    }
-                    className={`my-2 ${
-                      location.pathname === "/adminpanel/ongoingprojects"
-                        ? "active-link"
-                        : ""
-                    }`}
-                  >
-                    <span className="text-lg">Ongoing Projects</span>
-                  </Sidebar.Item>
-                </Link>
-                <Link to="/adminpanel/completedprojects">
-                  <Sidebar.Item
-                    icon={
-                      <Check
-                        size={24}
-                        className={` ${
-                          location.pathname === "/adminpanel/completedprojects"
-                            ? "text-white"
-                            : ""
-                        }`}
-                      />
-                    }
-                    className={`my-2 ${
-                      location.pathname === "/adminpanel/completedprojects"
-                        ? "active-link"
-                        : ""
-                    }`}
-                  >
-                    <span className="text-lg">Completed Projects</span>
-                  </Sidebar.Item>
-                </Link>
-              </Sidebar.Collapse> */}
+           
 
               {/* -------- ADMIN INFO'S --------  */}
               {admin?.superAdmin ? (
