@@ -73,20 +73,20 @@ const AllUsers = () => {
                     {data?.email || ""}
                   </span>
                 </td>
-                <td className="pr-3 py-3 text-lg pl-6">
+                <td className="px-6 py-3 text-lg ">
                   {new Date(data.createdAt).toLocaleDateString()}
                 </td>
-                <td className="pr-3 py-3 text-lg pl-6">
+                <td className="px-6 py-3 text-lg ">
                   {data?.customerId || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="px-6 py-3 text-lg ">
                   {data?.companyName || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="px-6 py-3 text-lg ">
                   {data?.phoneNumber || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">{data?.city || ""}</td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="px-6 py-3 text-lg ">{data?.city || ""}</td>
+                <td className="px-6 py-3 text-lg ">
                   {data?.postalCode || ""}
                 </td>
               </tr>

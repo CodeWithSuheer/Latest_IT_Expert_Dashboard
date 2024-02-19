@@ -290,7 +290,7 @@ const AllInvoices = () => {
                 <th className="py-4 px-6 text-lg font-medium">Order ID</th>
                 <th className="py-4 px-6 text-lg font-medium">Amount</th>
                 <th className="py-4 px-6 text-lg font-medium">Invoice Type</th>
-                <th className="py-3 pr-6 text-lg font-medium">View Invoice</th>
+                <th className="py-3 px-6 text-lg font-medium">View Invoice</th>
                 <th className="py-3 pl-14 text-lg font-medium">Actions</th>
               </tr>
             </thead>
@@ -320,11 +320,11 @@ const AllInvoices = () => {
                         </span>
                       </td>
 
-                      <td className="pl-6 py-3 text-lg">{data.customerId}</td>
-                      <td className="pl-6 py-3 text-lg">{invoice.orderId}</td>
-                      <td className="pl-6 py-3 text-lg">${invoice.amount}</td>
+                      <td className="px-6 py-3 text-lg">{data.customerId}</td>
+                      <td className="px-6 py-3 text-lg">{invoice.orderId}</td>
+                      <td className="px-6 py-3 text-lg">${invoice.amount}</td>
 
-                      <td className="pl-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`px-4 py-1.5 rounded-full capitalize font-semibold text-xs ${
                             data.paymentStatus && invoice.status === "unpaid"
@@ -340,7 +340,7 @@ const AllInvoices = () => {
                         </span>
                       </td>
                       {/* ---------- PREVIEW BUTTON ----------  */}
-                      <td className="pr-6 py-3 text-lg font-semibold underline underline-offset-4 text-[#F11900]"
+                      <td className=" px-12  py-3 text-lg font-semibold underline underline-offset-4 text-[#F11900]"
                         onClick={() => openModal(data.id, invoice.id)}
                       >
                         Preview Invoice

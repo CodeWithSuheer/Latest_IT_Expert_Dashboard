@@ -218,7 +218,7 @@ const Support = () => {
                 ))
               ) : (
                 <tr>
-                  <td className="px-6 py-4 text-2xl text-gray-950">
+                  <td colSpan={'7'} className="py-4 px-2 text-lg font-medium pl-3">
                     No data available
                   </td>
                 </tr>
