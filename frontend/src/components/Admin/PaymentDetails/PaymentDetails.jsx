@@ -5,6 +5,7 @@ import { Dropdown, Spinner } from "keep-react";
 import { X, FileArrowDown } from "phosphor-react";
 import { Modal, Button, Tooltip } from "keep-react";
 import { getAllProjectOrderAsync } from "../../../features/projectorderSlice";
+import { getAllPaymentProofsAsync, updatePaymentProofsAsync } from "../../../features/PaymentStatusSlice";
 
 const PaymentDetails = () => {
   const dispatch = useDispatch();
@@ -12,16 +13,20 @@ const PaymentDetails = () => {
   const [showModalX, setShowModalX] = useState(false);
   const [selectedObjectId, setSelectedObjectId] = useState(null);
 
-  const ProjectOrders = useSelector((state) => state.projectorder.AllProjectOrder);
-  console.log('ProjectOrders', ProjectOrders);
+  const allPaymentProofs = useSelector((state) => state.paymentDetail.allPaymentProofs);
+  // console.log('allPaymentProofs', allPaymentProofs);
 
-  const loading = useSelector((state) => state.projectorder.loading);
+  const selectedImage = allPaymentProofs.find((data)=> data.id === selectedObjectId );
+  // console.log('selectedImage', selectedImage);
+
+
+  const loading = useSelector((state) => state.paymentDetail.loading);
 
   useEffect(() => {
-    dispatch(getAllProjectOrderAsync());
+    dispatch(getAllPaymentProofsAsync());
   }, [dispatch]);
 
-  if (!ProjectOrders) {
+  if (!allPaymentProofs) {
     return <div>Loading...</div>;
   }
 
@@ -31,11 +36,22 @@ const PaymentDetails = () => {
   };
 
   const getSelectedProjectDetails = () => {
-    return ProjectOrders.find((data) => data.id === selectedObjectId);
+    return allPaymentProofs.find((data) => data.id === selectedObjectId);
   };
   const SelectedProjectOrderDetails = getSelectedProjectDetails();
   const logoFile = SelectedProjectOrderDetails?.logoFile;
   const additionalFile = SelectedProjectOrderDetails?.attachmentFile;
+// enum:['Verified','Pending','Rejected'],
+
+
+const handleUpdatePaymentStatus = (objectId, selectedValue) => {
+  console.log(objectId, selectedValue);
+
+  // SENDING VAlUE TO BACKEND
+  dispatch(updatePaymentProofsAsync({ id: objectId, status: selectedValue })).then(() => {
+    dispatch(getAllPaymentProofsAsync());
+  });
+ }
 
   return (
     <>
@@ -45,7 +61,7 @@ const PaymentDetails = () => {
             <h3 className="text-gray-800 text-2xl font-semibold tracking-wide sm:text-3xl">
               INVOICE PAYMENT DETAILS{" "}
               <span className="text-lg font-normal">
-                ({ProjectOrders.length})
+                ({allPaymentProofs.length})
               </span>
             </h3>
           </div>
@@ -70,58 +86,41 @@ const PaymentDetails = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {ProjectOrders.map((data, idx) => (
+                {allPaymentProofs.map((data, idx) => (
                   <tr key={idx}>
                     <td className="pl-0 py-3 text-lg ">{idx + 1}</td>
-                    {/* ------------ USERS DETAILS ------------ */}
-                    <td className="gap-x-3 pl-10">
-                        <span className="text-gray-700 text-lg font-medium capitalize">
-                          Username
-                        </span>{" "}
-                        <br />
-                        <span className="text-gray-700 text-sm">
-                          suheer@gmail.com
-                        </span>
-                    </td>
+                    <td className="pl-10 py-3 text-lg">{data.clientData.name}</td>
 
-                    
                     {/* ------------ BANK DETAILS ------------ */}
                     <td className="gap-x-3 pl-10">
                         <span className="text-gray-700 text-lg font-medium capitalize">
-                          JS Bank
+                          {data.accountUsed.branchAddress}
                         </span>{" "}
                         <br />
                         <span className="text-gray-700 text-sm">
-                          IBN254123546354354
+                        {data.accountUsed.IBAN}
                         </span>
                     </td>
 
-                    <td className="pl-10 py-3 text-lg  text-red-600">{data.customerId}</td>
-                    <td className="pl-10 py-3 text-lg  text-red-600">{data.customerId}</td>
-
-                    
+                    <td className="pl-10 py-3 text-lg  text-red-600">{data.clientData.customerId}</td>
+                    <td className="pl-10 py-3 text-lg  text-red-600">{data.clientData.orderId}</td>
 
                     <td className="whitespace-nowrap flex py-2 pl-10">
                     <Dropdown
-                      label="Update Status"
+                      label={data.status}
                       size="sm"
                       dismissOnClick={true}
                       className="bg-gray-200 mx-1 text-gray-900 hover:bg-gray-300"
                     >
                       <Dropdown.Item
-                        // onClick={() => handleUpdateRole(data.id, true)}
+                        onClick={() => handleUpdatePaymentStatus(data.id, "Verified")}
                         className="text-md font-medium hover:bg-gray-300 hover:text-black"
                       >
-                        Pending
+                        Verified
                       </Dropdown.Item>
+
                       <Dropdown.Item
-                        // onClick={() => handleUpdateRole(data.id, false)}
-                        className="text-md font-medium hover:bg-gray-300 hover:text-black"
-                      >
-                        Verify
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        // onClick={() => handleUpdateRole(data.id, false)}
+                        onClick={() => handleUpdatePaymentStatus(data.id, "Rejected")}
                         className="text-md font-medium hover:bg-gray-300 hover:text-black"
                       >
                         Rejected
@@ -131,10 +130,9 @@ const PaymentDetails = () => {
 
                   <td className="px-4 py-3">
                       <button  onClick={() => openModal(data.id)} className="text-white text-sm pl-8 py-2 rounded-lg cursor-pointer">
-                        <img src="https://cdn.shopify.com/s/files/1/0704/6378/2946/files/eye-close-line.png?v=1708585900" alt="" />
+                        <img src="https://cdn.shopify.com/s/files/1/0704/6378/2946/files/eye-line.png?v=1708596135" alt="" />
                       </button>
                   </td>
-
 
                   </tr>
                 ))}
@@ -161,10 +159,11 @@ const PaymentDetails = () => {
         </Modal.Header>
         <Modal.Body className="pb-10">
           <div className="flex justify-center items-center">
-            <img src="https://cdn.shopify.com/s/files/1/0704/6378/2946/files/Portfolio_Section1.png?v=1708328992" alt="" />
+            <img src={selectedImage?.image.secure_url} alt="" width={400} height={400} />
           </div>
         </Modal.Body>
       </Modal>
+
     </>
   );
 };
