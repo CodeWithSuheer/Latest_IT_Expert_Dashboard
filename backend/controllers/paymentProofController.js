@@ -14,10 +14,7 @@ export const getAllPaymentProofs = async (req, res, next) => {
 export const updatePaymentProofStatus = async (req,res,next) => {
     try {
         const {id,status} =  req.body;
-        await PaymentProof.updateOne(
-            { _id: { $in: id } },
-            { $set: { status: status } }
-        );
+        await PaymentProof.findByIdAndUpdate(id, { status: status });
         res.status(201).json({msg:"success"});
     } catch (error) {
       res.status(400).json({ msg: error.message });
