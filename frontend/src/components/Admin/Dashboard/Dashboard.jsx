@@ -154,7 +154,7 @@ const  loading = useSelector((state) => state.contactForms.loading);
                 {/* <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Email</th> */}
                 {/* <th className="py-4 px-2 md:text-md lg:text-md font-medium">Company</th> */}
                 <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Message</th>
-                <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                <th className=" md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
                   Actions
                 </th>
               </tr>
@@ -169,7 +169,7 @@ const  loading = useSelector((state) => state.contactForms.loading);
                       <tr key={startIndex + idx} className="cursor-pointer">
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{startIndex + idx + 1}</td>
 
-                        <td className="gap-x-3 px-6 whitespace-nowrap w-72">
+                        {/* <td className="gap-x-3 px-6 whitespace-nowrap w-72">
                         <span className="text-gray-700 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium capitalize">
                           {data.name}
                         </span>{" "}
@@ -177,14 +177,26 @@ const  loading = useSelector((state) => state.contactForms.loading);
                         <span className="text-gray-700 text-md">
                           {data.email}
                         </span>
+                      </td> */}
+
+                      <td className="gap-x-3 px-6 whitespace-nowrap">
+                        <span className="text-gray-700 md:text-sm lg:text-md xl:text-lg font-medium capitalize">
+                           {data.name}
+                        </span>{" "}
+                        <br />
+                        <span className="text-gray-700 text-sm">
+                          {data?.email || ""}
+                        </span>
                       </td>
+
+
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{new Date(data.createdAt).toLocaleDateString()}</td>
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.refNumber}</td>
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.phone}</td>
                         {/* <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.email}</td> */}
                         <td className="pr-1 py-3 pl-6 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60 font-semibold underline underline-offset-4 text-[#F11900]" onClick={() => onClickTwo(data.id)}>View Now</td>
-                        <td className="pr-10 mr-10 flex items-center justify-center py-3 w-44">
-                          <div className="trash_button rounded-full bg-[#F7F7F7] text-black p-2 ms-2.5 transition hover:scale-110"
+                        <td className="py-3 w-44">
+                          <div className="w-11 rounded-full bg-[#F7F7F7] text-black p-2 ms-2.5"
                             onClick={() => onClickErrorModal(data.id)}
                           >
                             <svg

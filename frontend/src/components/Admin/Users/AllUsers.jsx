@@ -64,6 +64,8 @@ const AllUsers = () => {
                 <td td className="pr-3 py-4 text-lg pl-3">
                   {idx + 1}
                 </td>
+
+
                 <td className="gap-x-3 px-6 whitespace-nowrap">
                   <span className="text-gray-700 text-md font-medium capitalize">
                     {`${data.firstName || ""} ${data?.lastName || ""}`}
@@ -73,6 +75,8 @@ const AllUsers = () => {
                     {data?.email || ""}
                   </span>
                 </td>
+
+                
                 <td className="pr-3 py-3 text-lg pl-6">
                   {new Date(data.createdAt).toLocaleDateString()}
                 </td>
