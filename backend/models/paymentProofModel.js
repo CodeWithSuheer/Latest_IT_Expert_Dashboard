@@ -1,5 +1,4 @@
 
-
 import mongoose, { Schema } from "mongoose";
 
 const accountSchema = new Schema({
@@ -31,7 +30,7 @@ const schema = new Schema({
             required:[true,"Please Provide secure_url"]
          },
       },
-      mainDocumentId:{
+    mainDocumentId:{
         type:mongoose.Types.ObjectId,
         required:[true,"Please Provide id"]
     },
@@ -48,7 +47,10 @@ const schema = new Schema({
         name:{type:String},
         customerId:{type:String},
         orderId:{type:String}
+    },
+    mainDocumentData:{
+        type:Object 
     }
 },{timestamps:true});
 
-export const PaymentProof = mongoose.model("PaymentProof",schema);
+export const PaymentProof = mongoose.model("PaymentProof",schema)
