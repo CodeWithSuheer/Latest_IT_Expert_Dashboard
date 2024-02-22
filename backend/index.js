@@ -15,6 +15,7 @@ import clientRouter from "./routes/clientRoutes.js";
 import supportRouter from "./routes/supportRoutes.js";
 import ProjectOrderRouter from "./routes/ProjectOrderRoutes.js";
 import projectsRouter from "./routes/projectsRoutes.js";
+import paymentProofRouter from "./routes/paymentProofRoutes.js";
 
 
 
@@ -66,6 +67,7 @@ app.use("/api/clients",clientRouter);
 app.use("/api/support",supportRouter);
 app.use('/api/ProjectOrder', ProjectOrderRouter);
 app.use('/api/projects', projectsRouter);
+app.use('/api/paymentProofs', paymentProofRouter);
 
 
 
