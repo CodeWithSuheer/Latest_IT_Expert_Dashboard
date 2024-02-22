@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Invoices, MainDocument } from "../models/invoiceModel.js";
 import { sendEmail } from "../assets/nodemailer.js";
+import { Projects } from "../models/ProjectsModel.js";
 
 function setMongoose() {
   return mongoose.set("toJSON", {
@@ -96,6 +97,7 @@ export const updateInvoice = async (req, res, next) => {
     dueDate,
     secondInvoiceDueDate,
   } = req.body;
+  
  try {
   let updateQuery = {};
   if (to) {
@@ -154,11 +156,41 @@ export const updateInvoice = async (req, res, next) => {
       Object.assign(mainDocument, updateQuery);
       await mainDocument.save();
 
+      // Update payment status of the corresponding project
+      if (paymentStatus) {
+       
+        const project = await Projects.findOne({ orderId: orderId });
+        if (project) {
+         await Projects.findOneAndUpdate(
+          {orderId: orderId},
+          {paymentStatus:paymentStatus},
+          {upsert: true, new: true, setDefaultsOnInsert: true}
+        )
+         
+        }
+        
+      }
+     
+
       return res.status(200).json({ msg: "Invoice Updated" });
     } else {
       // Update only MainDocument 
       Object.assign(mainDocument, updateQuery);
       await mainDocument.save();
+
+      // Update payment status of the corresponding project
+      if (paymentStatus) {
+        const project = await Projects.findOne({ orderId: orderId });
+        if (project) {
+          await Projects.findOneAndUpdate(
+            {orderId: orderId},
+            {paymentStatus:paymentStatus},
+            {upsert: true, new: true, setDefaultsOnInsert: true}
+
+          )
+        }
+      }
+      
       return res.status(200).json({ msg: "Invoice Updated" });
     }
   } catch (error) {

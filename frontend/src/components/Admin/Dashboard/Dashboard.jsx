@@ -22,6 +22,7 @@ const Dashboard = () => {
 
   const DashboardData = useSelector((state) => state.contactForms.allForms);
 const  loading = useSelector((state) => state.contactForms.loading);
+
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
