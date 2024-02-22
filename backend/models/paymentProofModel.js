@@ -31,7 +31,7 @@ const schema = new Schema({
             required:[true,"Please Provide secure_url"]
          },
       },
-    id:{
+      mainDocumentId:{
         type:mongoose.Types.ObjectId,
         required:[true,"Please Provide id"]
     },
