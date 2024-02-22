@@ -14,7 +14,7 @@ const PaymentDetails = () => {
   const [selectedObjectId, setSelectedObjectId] = useState(null);
 
   const allPaymentProofs = useSelector((state) => state.paymentDetail.allPaymentProofs);
-  // console.log('allPaymentProofs', allPaymentProofs);
+  console.log('allPaymentProofs', allPaymentProofs);
 
   const selectedImage = allPaymentProofs.find((data)=> data.id === selectedObjectId );
   // console.log('selectedImage', selectedImage);
@@ -44,8 +44,11 @@ const PaymentDetails = () => {
 // enum:['Verified','Pending','Rejected'],
 
 
+
+
+
 const handleUpdatePaymentStatus = (objectId, selectedValue) => {
-  console.log(objectId, selectedValue);
+  console.log(objectId);
 
   // SENDING VAlUE TO BACKEND
   dispatch(updatePaymentProofsAsync({ id: objectId, status: selectedValue })).then(() => {

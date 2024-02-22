@@ -19,7 +19,6 @@ const Projects = () => {
   const ProjectsData = useSelector((state) => state.project.allProjects);
   const loading = useSelector((state) => state.project.loading);
 
-
   const [filteredProjects, setFilteredProjects] = useState(ProjectsData);
 
   const handleOngoingFilter = () => {
@@ -47,26 +46,23 @@ const Projects = () => {
 
   useEffect(() => {
     let searchData = [];
-  
+
     if (searchQuery) {
       searchData = ProjectsData.filter(
         (data) =>
           data.customerId.toString().includes(searchQuery.toLowerCase()) ||
           data.orderId.toString().includes(searchQuery.toLowerCase()) ||
-          data.customerName.toLowerCase().includes(searchQuery.toLowerCase()) 
+          data.customerName.toLowerCase().includes(searchQuery.toLowerCase())
       );
-  
+
       if (searchQuery.length > 1) {
         setFilteredProjects(searchData);
       }
     } else {
-      
       setFilteredProjects(ProjectsData);
     }
   }, [searchQuery, ProjectsData]);
 
-
-  
   return (
     <>
       <div className="py-10 px-4 md:px-8 rounded-md bg-white">
@@ -154,85 +150,80 @@ const Projects = () => {
           </div>
         </div>
 
-
         {loading ? (
-            <div className="flex justify-center items-center">    
-    <Spinner color="failure" size="lg"  />
-    </div>
-  ) : (
+          <div className="flex justify-center items-center">
+            <Spinner color="failure" size="lg" />
+          </div>
+        ) : (
+          <div className="mt-12 relative h-max overflow-auto">
+            <table className="w-full table-auto text-md text-left overflow-auto">
+              <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
+                <tr>
+                  <th className="py-4 px-6 text-lg font-medium">Sr. </th>
+                  <th className="py-4 px-6 text-lg font-medium">Name</th>
+                  <th className="py-4 px-6 text-lg font-medium">
+                    Project Title
+                  </th>
+                  <th className="py-4 px-6 text-lg font-medium">Customer ID</th>
+                  <th className="py-4 px-6 text-lg font-medium">Order Id</th>
+                  <th className="py-4 px-6 text-lg font-medium">Deadline</th>
+                  <th className="py-4 px-6 text-lg font-medium">Amount</th>
+                  <th className="py-4 px-6 text-lg font-medium">
+                    Invoice Status
+                  </th>
+                  <th className="py-4 px-6 text-lg font-medium">
+                    View Details
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-600 divide-y">
+                {filteredProjects.map((data, idx) => (
+                  <tr key={idx}>
+                    <td className="px-6 py-4 ">{idx + 1}</td>
+                    <td className="px-6 py-4 ">{data.customerName}</td>
+                    <td className="px-6 py-4  text-red-600">
+                      {data.projectTitle}
+                    </td>
+                    <td className="px-6 py-4  text-red-600">
+                      {data.customerId}
+                    </td>
+                    <td className="px-6 py-4 text-md">{data.orderId}</td>
+                    <td className="px-6 py-4 ">
+                      {new Date(data.Deadline).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 ">{data.amount}</td>
+                    <td className="pl-6 py-4">
+                      <span
+                        className={`px-5 py-2 rounded-full capitalize font-semibold text-sm ${
+                          data.paymentStatus === "unpaid"
+                            ? "text-red-600 bg-red-50"
+                            : data.paymentStatus === "paid"
+                            ? "text-blue-600 bg-blue-50"
+                            : data.paymentStatus === "partially paid"
+                            ? "text-yellow-600 bg-yellow-50"
+                            : ""
+                        }`}
+                      >
+                        {data.paymentStatus}
+                      </span>
+                    </td>
 
-        <div className="mt-12 relative h-max overflow-auto">
-          <table className="w-full table-auto text-md text-left overflow-auto">
-            <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
-              <tr>
-                <th className="py-4 px-6 text-lg font-medium">Sr. </th>
-                <th className="py-4 px-6 text-lg font-medium">Name</th>
-                <th className="py-4 px-6 text-lg font-medium">Project Title</th>
-                <th className="py-4 px-6 text-lg font-medium">Customer ID</th>
-                <th className="py-4 px-6 text-lg font-medium">Order Id</th>
-                <th className="py-4 px-6 text-lg font-medium">Deadline</th>
-                <th className="py-4 px-6 text-lg font-medium">Amount</th>
-                <th className="py-4 px-6 text-lg font-medium">
-                  Invoice Status
-                </th>
-                <th className="py-4 px-6 text-lg font-medium">View Details</th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-600 divide-y">
-
-{             filteredProjects.map((data, idx) => (
-                <tr key={idx}>
-                  <td className="px-6 py-4 ">{idx + 1}</td>
-                  <td className="px-6 py-4 ">{data.customerName}</td>
-                  <td className="px-6 py-4  text-red-600">
-                    {data.projectTitle}
-                  </td>
-                  <td className="px-6 py-4  text-red-600">{data.customerId}</td>
-                  <td className="px-6 py-4 text-md">{data.orderId}</td>
-                  <td className="px-6 py-4 ">
-                    {new Date(data.Deadline).toLocaleDateString()}
-                  </td>
-                  <td className="px-6 py-4 ">{data.amount}</td>
-                  <td className="pl-6 py-4">
-                    <span
-                      className={`px-5 py-2 rounded-full capitalize font-semibold text-sm ${
-                        data.paymentStatus === "unpaid"
-                          ? "text-red-600 bg-red-50"
-                          : data.paymentStatus === "paid"
-                          ? "text-blue-600 bg-blue-50"
-                          : data.paymentStatus === "partially paid"
-                          ? "text-yellow-600 bg-yellow-50"
-                          : ""
-                      }`}
-                    >
-                      {data.paymentStatus}
-                    </span>
-                  </td>
-
-
-                  <td className="px-6 py-4">
-                    <td   className="bg-[#f11900] text-white text-sm px-4 py-2 rounded-lg cursor-pointer">  
-                    <Link
-                      to={`/adminpanel/projectdetails/${data.id}`}
-                      onClick={() => window.scroll(0, 0)}
-                    
-                    
-                    >
-                      View Details
-                    </Link>
-                  </td>
-                  </td>
-              </tr>
-              ))
-                    }
-
-
-            </tbody>
-          </table>
-        </div>
-
-  )}
-
+                    <td className="px-6 py-4">
+                      <td className="bg-[#f11900] text-white text-sm px-4 py-2 rounded-lg cursor-pointer">
+                        <Link
+                          to={`/adminpanel/projectdetails/${data.id}`}
+                          onClick={() => window.scroll(0, 0)}
+                        >
+                          View Details
+                        </Link>
+                      </td>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </>
   );
