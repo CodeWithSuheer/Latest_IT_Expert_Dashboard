@@ -8,6 +8,7 @@ import {
   getAllFormsAsync,
 } from "../../../features/contactFormSlice";
 import "./Dashboard.css";
+import { Spinner } from "keep-react";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const DashboardData = useSelector((state) => state.contactForms.allForms);
+const  loading = useSelector((state) => state.contactForms.loading);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -96,6 +98,7 @@ const Dashboard = () => {
                 ({DashboardData.length})
               </span>
             </h3>
+         
           </div>
           <div className="mt-3 md:mt-0 flex gap-8">
             {/* ------------- SEARCH BAR ------------- */}
@@ -129,8 +132,18 @@ const Dashboard = () => {
           </div>
         </div>
 
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
+
         <div className="mt-12 relative h-max overflow-x-auto">
           {/* ------------- CONTACT QUERIES TABLE ------------- */}
+
+    
+
           <table className="contact_table w-full table-auto text-sm text-left overflow-x-auto">
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
               <tr>
@@ -142,7 +155,7 @@ const Dashboard = () => {
                 {/* <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Email</th> */}
                 {/* <th className="py-4 px-2 md:text-md lg:text-md font-medium">Company</th> */}
                 <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Message</th>
-                <th className="py-4 pl-12 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                <th className=" md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
                   Actions
                 </th>
               </tr>
@@ -157,22 +170,34 @@ const Dashboard = () => {
                       <tr key={startIndex + idx} className="cursor-pointer">
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{startIndex + idx + 1}</td>
 
-                        <td className="gap-x-3 px-6 whitespace-nowrap w-72">
-                        <span className="text-gray-700 text-lg font-medium capitalize">
+                        {/* <td className="gap-x-3 px-6 whitespace-nowrap w-72">
+                        <span className="text-gray-700 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium capitalize">
                           {data.name}
                         </span>{" "}
                         <br />
                         <span className="text-gray-700 text-md">
                           {data.email}
                         </span>
+                      </td> */}
+
+                      <td className="gap-x-3 px-6 whitespace-nowrap">
+                        <span className="text-gray-700 md:text-sm lg:text-md xl:text-lg font-medium capitalize">
+                           {data.name}
+                        </span>{" "}
+                        <br />
+                        <span className="text-gray-700 text-sm">
+                          {data?.email || ""}
+                        </span>
                       </td>
-                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{new Date(data.createdAt).toLocaleDateString()}</td>
-                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.refNumber}</td>
+
+
+                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{new Date(data.createdAt).toLocaleDateString()}</td>
+                        <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.refNumber}</td>
                         <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60">{data.phone}</td>
                         {/* <td className="px-2 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.email}</td> */}
                         <td className="pr-1 py-3 pl-6 md:text-md lg:text-md xl:text-md 2xl:text-lg w-60 font-semibold underline underline-offset-4 text-[#F11900]" onClick={() => onClickTwo(data.id)}>View Now</td>
-                        <td className="pr-14 flex items-center justify-center py-3">
-                          <div className="trash_button rounded-full bg-[#F7F7F7] text-black p-2 ms-2.5 transition hover:scale-110"
+                        <td className="py-3 w-44">
+                          <div className="w-11 rounded-full bg-[#F7F7F7] text-black p-2 ms-2.5"
                             onClick={() => onClickErrorModal(data.id)}
                           >
                             <svg
@@ -208,8 +233,18 @@ const Dashboard = () => {
               )}
             </tbody>
           </table>
+
+ 
+
         </div>
+
+)}
       </div>
+
+
+
+
+
       {/* -------------- PAGINATION -------------- */}
       <div className=" flex justify-center mt-5 mb-5">
         <nav aria-label="Page navigation example">

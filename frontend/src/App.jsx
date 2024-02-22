@@ -24,6 +24,7 @@ import ProjectsDetails from "./components/Admin/Projects/ProjectsDetails";
 import "./App.css";
 import UpdateProjects from "./components/Admin/Projects/UpdateProjects";
 import ProjectsOrder from "./components/Admin/ProjectsOrder/ProjectsOrder";
+import PaymentDetails from "./components/Admin/PaymentDetails/PaymentDetails";
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
             <Route path="projectdetails/:id" element={<ProjectsDetails />} />
             <Route path="updateproject/:id" element={<UpdateProjects />} />
             <Route path="projectsOrders" element={<ProjectsOrder />} />
+            <Route path="paymentDetails" element={<PaymentDetails />} />
             {/* SUPPORTS */}
             <Route path="support" element={<Support />} />
             {/* ADMIN - REQUESTS */}

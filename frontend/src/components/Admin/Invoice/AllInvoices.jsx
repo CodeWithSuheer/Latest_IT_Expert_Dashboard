@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Trash, PencilSimple } from "phosphor-react";
-import { Modal, Button, Tooltip } from "keep-react";
+import { Modal, Button, Tooltip, Spinner } from "keep-react";
 import { X } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +30,7 @@ const AllInvoices = () => {
 
   // HERE WE GET DATA USING USESELECTOR FROM STATE
   const InvoicesData = useSelector((state) => state.invoice.allInvoices);
+  const loading = useSelector((state) => state.invoice.loading);
 
   const Modal_id = InvoicesData.filter((data) => data.id === selectedObjectId);
 
@@ -205,7 +206,7 @@ const AllInvoices = () => {
                   value={searchQuery}
                   onChange={handleSearch}
                   className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border border-[#D9D9D9] rounded-lg focus:border-red-400 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-red-300"
-                  placeholder="Search name & email"
+                  placeholder="Search Here"
                 />
               </div>
             </div>
@@ -219,8 +220,8 @@ const AllInvoices = () => {
               activeTab === "all"
                 ? "bg-[#F11900] text-white"
                 : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-            } rounded-md mr-5`}
-            style={{ padding: "8px 25px" }}
+            } rounded-md text-md  md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
+            
             onClick={handleAllInvoices}
           >
             All
@@ -230,8 +231,8 @@ const AllInvoices = () => {
               activeTab === "paid"
                 ? "bg-[#F11900] text-white"
                 : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-            } rounded-md mr-5`}
-            style={{ padding: "8px 25px" }}
+            } rounded-md text-md  md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
+            
             onClick={handlePaid}
           >
             Paid
@@ -241,8 +242,8 @@ const AllInvoices = () => {
               activeTab === "partiallyPaid"
                 ? "bg-[#F11900] text-white"
                 : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-            } rounded-md mr-5`}
-            style={{ padding: "8px 25px" }}
+            } rounded-md text-md  md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
+            
             onClick={handlePartiallyPaid}
           >
             Partially Payment
@@ -252,17 +253,33 @@ const AllInvoices = () => {
               activeTab === "unpaid"
                 ? "bg-[#F11900] text-white"
                 : "bg-white text-black border border-black hover:bg-[#F11900] hover:text-white hover:border-[#f11900]"
-            } rounded-md mr-5`}
-            style={{ padding: "8px 25px" }}
+            } rounded-md text-md  md:text-md lg:text-md xl:text-md mr-5 md:px-4 lg:px-5 xl:px-5 2xl:px-6 py-2 xl:py-2 2xl:py-2`}
+            
             onClick={handleUnPaid}
           >
             Unpaid
           </button>
         </div>
 
-        {/* ------------- TABLE ------------- */}
+
+
+
+
+
+
+         {/* ------------- TABLE ------------- */}
+
+
+         
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
         <div className="-mt-2 relative h-max overflow-auto">
-          {/* ------------- TABLE ------------- */}
+      
+
+
           <table className="w-full table-auto text-sm text-left">
             {/* ------------- TABLE HEAD ------------- */}
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
@@ -279,7 +296,14 @@ const AllInvoices = () => {
             </thead>
             {/* ------------- TABLE BODY ------------- */}
             <tbody className="text-gray-600 divide-y">
-              { filterdByStatus.map((data, index) => (
+
+{ 
+
+
+              filterdByStatus.map((data, index) => (
+
+
+
                 <React.Fragment key={index}>
                   {data.invoices.map((invoice, invoiceIndex) => (
                     <tr
@@ -347,18 +371,29 @@ const AllInvoices = () => {
                   ))}
                 </React.Fragment>
               ))}
+                          
+
+
               {/* If no data is available */}
               {InvoicesData.length === 0 && (
                 <tr>
-                  <td className="px-6 py-4 text-lg text-gray-950">
+                  <td className="pl-6 py-3 text-lg">
+              
                     No data available
+                
                   </td>
                 </tr>
               )}
             </tbody>
           </table>
+
+
+
         </div>
+          )}
       </div>
+
+
 
       {/* --------------- PAGINATION --------------- */}
       {/* <div className=" flex justify-center mt-5 mb-5">

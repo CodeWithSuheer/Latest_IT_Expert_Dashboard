@@ -16,7 +16,7 @@ import Icons from "./Icons";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUserAsync, reset } from "../../features/authSlice";
-import { HeartHandshake, File } from "lucide-react";
+import { HeartHandshake, File, Receipt  } from "lucide-react";
 import "./AdminPanel.css";
 
 const AdminBody = () => {
@@ -58,6 +58,7 @@ const AdminBody = () => {
     <>
       <div className="adminBody bg-slate-300 px-0">
         {/* ------------ DASHBOARD SIDE MENU ------------  */}
+
         <div className="admin_sideMenu">
           <Sidebar
             className="pt-6"
@@ -132,7 +133,33 @@ const AdminBody = () => {
                   </span>
                 </Sidebar.Item>
               </Link>
-              {/* -------- ALL INVOICE --------  */}
+              
+              {/* -------- INVOICE PAYMENT --------  */}
+              <Link to="/adminpanel/paymentDetails">
+                <Sidebar.Item
+                  icon={
+                    <Receipt
+                      size={24}
+                      className={` ${
+                        location.pathname === "/adminpanel/paymentDetails"
+                          ? "text-white"
+                          : ""
+                      }`}
+                    />
+                  }
+                  className={`my-3 ${
+                    location.pathname === "/adminpanel/paymentDetails"
+                      ? "active-link"
+                      : ""
+                  }`}
+                >
+                  <span className="md:text-sm lg:text-sm xl:text-md 2xl:text-lg">
+                    Invoice Payments
+                  </span>
+                </Sidebar.Item>
+              </Link>
+
+              {/* -------- PROJECT ORDER --------  */}
               <Link to="/adminpanel/projectsOrders">
                 <Sidebar.Item
                   // style={{ fontSize: "1.125rem" }}
@@ -207,56 +234,6 @@ const AdminBody = () => {
                   </span>
                 </Sidebar.Item>
               </Link>
-
-              {/* -------- PROJECTS --------  */}
-              {/* <Sidebar.Collapse
-                icon={<Browsers size={24} />}
-                label="Projects"
-                style={{ fontSize: "1.125rem" }}
-              >
-                <Link to="/adminpanel/ongoingprojects">
-                  <Sidebar.Item
-                    icon={
-                      <Clock
-                        size={24}
-                        className={` ${
-                          location.pathname === "/adminpanel/ongoingprojects"
-                            ? "text-white"
-                            : ""
-                        }`}
-                      />
-                    }
-                    className={`my-2 ${
-                      location.pathname === "/adminpanel/ongoingprojects"
-                        ? "active-link"
-                        : ""
-                    }`}
-                  >
-                    <span className="text-lg">Ongoing Projects</span>
-                  </Sidebar.Item>
-                </Link>
-                <Link to="/adminpanel/completedprojects">
-                  <Sidebar.Item
-                    icon={
-                      <Check
-                        size={24}
-                        className={` ${
-                          location.pathname === "/adminpanel/completedprojects"
-                            ? "text-white"
-                            : ""
-                        }`}
-                      />
-                    }
-                    className={`my-2 ${
-                      location.pathname === "/adminpanel/completedprojects"
-                        ? "active-link"
-                        : ""
-                    }`}
-                  >
-                    <span className="text-lg">Completed Projects</span>
-                  </Sidebar.Item>
-                </Link>
-              </Sidebar.Collapse> */}
 
               {/* -------- ADMIN INFO'S --------  */}
               {admin?.superAdmin ? (

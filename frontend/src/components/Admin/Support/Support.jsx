@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TextInput } from "keep-react";
+import { Spinner, TextInput } from "keep-react";
 import { MagnifyingGlass, Trash, Chat } from "phosphor-react";
 import { Modal, Button } from "keep-react";
 import { CloudArrowUp } from "phosphor-react";
@@ -19,6 +19,12 @@ const Support = () => {
   const allSupportRequests = useSelector(
     (state) => state.support.allSupportReq
   );
+
+  const loading = useSelector(
+    (state) => state.support.loading
+  );
+
+
   // console.log("allSupportRequests", allSupportRequests);
 
   // HERE WE CALL THE FUNCTION TO GET SUPPORT DATA
@@ -126,6 +132,14 @@ const Support = () => {
             </div>
           </div>
         </div>
+
+
+        {loading ? (
+            <div className="flex justify-center items-center">    
+    <Spinner color="failure" size="lg"  />
+    </div>
+  ) : (
+
         <div className="mt-12 relative h-max overflow-x-auto">
           {/* ------------- CONTACT QUERIES TABLE ------------- */}
           <table className="contact_table w-full table-auto text-sm text-left overflow-x-auto">
@@ -212,6 +226,10 @@ const Support = () => {
             </tbody>
           </table>
         </div>
+  )}
+
+
+
       </div>
       <div className=" flex justify-center mt-5 mb-5">
         <nav aria-label="Page navigation example">

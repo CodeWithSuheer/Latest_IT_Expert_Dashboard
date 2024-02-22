@@ -361,12 +361,12 @@ const ProjectsDetails = () => {
                     <h2 className="text-4xl font-semibold text-gray-700">
                       Upload Project File Here:
                     </h2>
-                    <button
-                      className="text-xm mt-6 bg-[#f11900] text-white rounded-lg px-4 py-2"
-                      onClick={Output}
-                    >
-                      Upload File
-                    </button>
+                      <button
+                        className="text-xm mt-6 bg-[#f11900] text-white rounded-lg px-4 py-2"
+                        onClick={Output}
+                      >
+                        Upload File
+                      </button>
                   </li>
                 </ul>
               </div>
@@ -409,7 +409,8 @@ const ProjectsDetails = () => {
               <div className="mt-1 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-4">
                 {/* TITLE */}
                 <div className="sm:col-span-3">
-                  <label className="block text-sm font-medium leading-6 text-gray-900"
+                  <label
+                    className="block text-sm font-medium leading-6 text-gray-900"
                     for="title"
                   >
                     Title
