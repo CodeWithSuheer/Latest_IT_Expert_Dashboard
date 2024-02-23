@@ -311,18 +311,18 @@ const AllInvoices = () => {
                       className="cursor-pointer"
                     >
                       <td className="gap-x-3 px-6 whitespace-nowrap">
-                        <span className="text-gray-700 text-lg font-medium capitalize">
+                        <span className="text-gray-700 md:text-sm lg:text-md xl:text-lg font-medium capitalize">
                           {invoice.to.name}
                         </span>{" "}
                         <br />
-                        <span className="text-gray-700 text-md">
+                        <span className="text-gray-700 text-md md:text-sm">
                           {invoice.to.email}
                         </span>
                       </td>
 
-                      <td className="pl-6 py-3 text-lg">{data.customerId}</td>
-                      <td className="pl-6 py-3 text-lg">{invoice.orderId}</td>
-                      <td className="pl-6 py-3 text-lg">${invoice.amount}</td>
+                      <td className="pl-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.customerId}</td>
+                      <td className="pl-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">{invoice.orderId}</td>
+                      <td className="pl-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">${invoice.amount}</td>
 
                       <td className="pl-6 py-4 whitespace-nowrap">
                         <span

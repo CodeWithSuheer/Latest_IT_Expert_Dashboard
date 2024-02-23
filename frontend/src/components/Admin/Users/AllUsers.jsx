@@ -67,7 +67,7 @@ const AllUsers = () => {
 
 
                 <td className="gap-x-3 px-6 whitespace-nowrap">
-                  <span className="text-gray-700 text-md font-medium capitalize">
+                  <span className="text-gray-700 md:text-sm lg:text-md xl:text-lg font-medium capitalize">
                     {`${data.firstName || ""} ${data?.lastName || ""}`}
                   </span>{" "}
                   <br />
@@ -77,20 +77,20 @@ const AllUsers = () => {
                 </td>
 
                 
-                <td className="pr-3 py-3 text-lg pl-6">
+                <td className="pr-3 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {new Date(data.createdAt).toLocaleDateString()}
                 </td>
-                <td className="pr-3 py-3 text-lg pl-6">
+                <td className="pr-3 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.customerId || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.companyName || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.phoneNumber || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">{data?.city || ""}</td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">{data?.city || ""}</td>
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.postalCode || ""}
                 </td>
               </tr>
