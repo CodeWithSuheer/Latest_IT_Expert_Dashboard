@@ -179,19 +179,19 @@ const Projects = () => {
               <tbody className="text-gray-600 divide-y">
                 {filteredProjects.map((data, idx) => (
                   <tr key={idx}>
-                    <td className="px-6 py-4 ">{idx + 1}</td>
-                    <td className="px-6 py-4 ">{data.customerName}</td>
-                    <td className="px-6 py-4  text-red-600">
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{idx + 1}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.customerName}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg text-red-600">
                       {data.projectTitle}
                     </td>
-                    <td className="px-6 py-4  text-red-600">
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg text-red-600">
                       {data.customerId}
                     </td>
-                    <td className="px-6 py-4 text-md">{data.orderId}</td>
-                    <td className="px-6 py-4 ">
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.orderId}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">
                       {new Date(data.Deadline).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 ">{data.amount}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.amount}</td>
                     <td className="pl-6 py-4">
                       <span
                         className={`px-5 py-2 rounded-full capitalize font-semibold text-sm ${
