@@ -53,7 +53,6 @@ const PaymentDetails = () => {
 
   const handleUpdatePaymentStatus = (objectId, selectedValue, datamain) => {
     console.log("datamain", datamain);
-    
 
     // SENDING VALUE TO BACKEND
     dispatch(
@@ -118,7 +117,9 @@ const PaymentDetails = () => {
             <table className="w-full table-auto text-md text-left overflow-auto">
               <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
                 <tr>
-                  <th className="py-4 px-0 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+                  <th className="py-4 px-0 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Sr.{" "}
+                  </th>
                   <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
                     Client_Name
                   </th>
@@ -128,15 +129,23 @@ const PaymentDetails = () => {
                   <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
                     Customer_ID
                   </th>
-                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Order_ID</th>
-                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Status</th>
-                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Pop</th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Order_ID
+                  </th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Status
+                  </th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Pop
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
                 {allPaymentProofs.map((data, idx) => (
                   <tr key={idx}>
-                    <td className="pl-0 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg ">{idx + 1}</td>
+                    <td className="pl-0 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg ">
+                      {idx + 1}
+                    </td>
                     <td className="pl-10 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">
                       {data.clientData.name}
                     </td>
@@ -160,38 +169,50 @@ const PaymentDetails = () => {
                     </td>
 
                     <td className="whitespace-nowrap flex py-2 pl-10">
-                      <Dropdown
-                        label={data.status}
-                        size="sm"
-                        dismissOnClick={true}
-                        className={`mx-1 text-gray-900 ${
-                          data.status == "Pending"
-                            ? "bg-gray-200 hover:bg-gray-300"
-                            : data.status == "Verified"
-                            ? "bg-green-300 hover:bg-green-400"
-                            : data.status == "Rejected"
-                            ? "bg-red-300 hover:bg-red-400"
-                            : "" 
-                        } w-32`}
-                      >
-                        <Dropdown.Item
-                          onClick={() =>
-                            handleUpdatePaymentStatus(data.id, "Verified", data)
-                          }
-                          className="text-md font-medium hover:bg-gray-300 hover:text-black w-36"
+                      {data.status === "Verified" ? (
+                        <>
+                          <button className="bg-green-300 text-black text-md py-2.5 px-8 mx-1 rounded-md">
+                            Verified
+                          </button>
+                        </>
+                      ) : (
+                        <Dropdown
+                          label={data.status}
+                          size="sm"
+                          dismissOnClick={true}
+                          className={`mx-1 text-gray-900 ${
+                            data.status == "Pending"
+                              ? "bg-gray-200 hover:bg-gray-300"
+                              : data.status == "Verified"
+                              ? "bg-green-300 hover:bg-green-400"
+                              : data.status == "Rejected"
+                              ? "bg-red-300 hover:bg-red-400"
+                              : ""
+                          } w-32`}
                         >
-                          Verified
-                        </Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() =>
+                              handleUpdatePaymentStatus(
+                                data.id,
+                                "Verified",
+                                data
+                              )
+                            }
+                            className="text-md font-medium hover:bg-gray-300 hover:text-black w-36"
+                          >
+                            Verified
+                          </Dropdown.Item>
 
-                        <Dropdown.Item
-                          onClick={() =>
-                            handleUpdatePaymentStatus(data.id, "Rejected")
-                          }
-                          className="text-md font-medium hover:bg-gray-300 hover:text-black w-36"
-                        >
-                          Rejected
-                        </Dropdown.Item>
-                      </Dropdown>
+                          <Dropdown.Item
+                            onClick={() =>
+                              handleUpdatePaymentStatus(data.id, "Rejected")
+                            }
+                            className="text-md font-medium hover:bg-gray-300 hover:text-black w-36"
+                          >
+                            Rejected
+                          </Dropdown.Item>
+                        </Dropdown>
+                      )}
                     </td>
 
                     <td className="px-4 py-3">
