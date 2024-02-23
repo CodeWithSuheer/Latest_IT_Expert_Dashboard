@@ -285,13 +285,13 @@ const AllInvoices = () => {
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
               <tr>
                 {/* <th className="py-4 pl-4 text-lg font-medium">Sr. </th> */}
-                <th className="py-4 px-6 text-lg font-medium">Name</th>
-                <th className="py-4 px-6 text-lg font-medium">Customer ID</th>
-                <th className="py-4 px-6 text-lg font-medium">Order ID</th>
-                <th className="py-4 px-6 text-lg font-medium">Amount</th>
-                <th className="py-4 px-6 text-lg font-medium">Invoice Type</th>
-                <th className="py-3 pr-6 text-lg font-medium">View Invoice</th>
-                <th className="py-3 pl-14 text-lg font-medium">Actions</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Name</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Customer_ID</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Order_ID</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Amount</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Invoice_Type</th>
+                <th className="py-3 pr-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">View_Invoice</th>
+                <th className="py-3 pl-14 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Actions</th>
               </tr>
             </thead>
             {/* ------------- TABLE BODY ------------- */}
@@ -343,7 +343,7 @@ const AllInvoices = () => {
                       <td className="pr-6 py-3 text-lg font-semibold underline underline-offset-4 text-[#F11900]"
                         onClick={() => openModal(data.id, invoice.id)}
                       >
-                        Preview Invoice
+                        Preview
                       </td>
 
                       <td className="flex items-center justify-center py-3">

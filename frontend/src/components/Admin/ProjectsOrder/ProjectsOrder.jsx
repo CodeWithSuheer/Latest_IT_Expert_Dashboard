@@ -64,14 +64,14 @@ const ProjectsOrder = () => {
           <table className="w-full table-auto text-md text-left overflow-auto">
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
               <tr>
-                <th className="py-4 px-6 text-lg font-medium">Sr. </th>
-                <th className="py-4 px-6 text-lg font-medium">Company Name</th>
-                <th className="py-4 px-6 text-lg font-medium">Project Title</th>
-                <th className="py-4 px-6 text-lg font-medium">Customer ID</th>
-                <th className="py-4 px-6 text-lg font-medium">Date</th>
-                <th className="py-4 px-6 text-lg font-medium">Deadline</th>
-                <th className="py-4 px-6 text-lg font-medium">Order ID</th>
-                <th className="py-4 px-6 text-lg font-medium">View Details</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Company_Name</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Project_Title</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Customer_ID</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Date</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Deadline</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Order_ID</th>
+                <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">View_Details</th>
               </tr>
             </thead>
             <tbody className="text-gray-600 divide-y">
@@ -80,16 +80,16 @@ const ProjectsOrder = () => {
                   <td className="px-6 py-3 text-lg ">{idx + 1}</td>
                   <td className="px-6 py-3 text-lg ">{data.companyName}</td>
                   <td className="px-6 py-3 text-lg ">{data.projectTitle}</td>
-                  <td className="px-6 py-3 text-lg  text-red-600">{data.customerId}</td>
+                  <td className="px-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg  text-red-600">{data.customerId}</td>
                   <td className="px-6 py-3 text-md">{new Date(data.startDate).toLocaleDateString()}</td>
                   <td className="px-6 py-3 ">{new Date(data.Deadline).toLocaleDateString()}</td>
-                  <td className="px-6 py-3 text-lg text-md text-red-600">{data.orderId}</td>
+                  <td className="px-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg text-red-600">{data.orderId}</td>
                   <td className="px-6 py-3">
                     <td
                       onClick={() => openModal(data.id)}
                       className="bg-[#f11900] text-white text-sm px-4 py-2 rounded-lg cursor-pointer"
                     >
-                      View Details
+                      View_Details
                     </td>
                   </td>
                 </tr>

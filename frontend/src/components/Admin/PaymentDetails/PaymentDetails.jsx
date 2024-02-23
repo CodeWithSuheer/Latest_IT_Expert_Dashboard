@@ -118,32 +118,32 @@ const PaymentDetails = () => {
             <table className="w-full table-auto text-md text-left overflow-auto">
               <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
                 <tr>
-                  <th className="py-4 px-0 text-lg font-medium">Sr. </th>
-                  <th className="py-4 px-10 text-lg font-medium">
-                    Client Name
+                  <th className="py-4 px-0 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Client_Name
                   </th>
-                  <th className="py-4 px-10 text-lg font-medium">
-                    Bank Details
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Bank_Details
                   </th>
-                  <th className="py-4 px-10 text-lg font-medium">
-                    Customer ID
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Customer_ID
                   </th>
-                  <th className="py-4 px-10 text-lg font-medium">Order ID</th>
-                  <th className="py-4 px-10 text-lg font-medium">Status</th>
-                  <th className="py-4 px-10 text-lg font-medium">Pop</th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Order_ID</th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Status</th>
+                  <th className="py-4 px-10 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Pop</th>
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
                 {allPaymentProofs.map((data, idx) => (
                   <tr key={idx}>
-                    <td className="pl-0 py-3 text-lg ">{idx + 1}</td>
-                    <td className="pl-10 py-3 text-lg">
+                    <td className="pl-0 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg ">{idx + 1}</td>
+                    <td className="pl-10 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg">
                       {data.clientData.name}
                     </td>
 
                     {/* ------------ BANK DETAILS ------------ */}
                     <td className="gap-x-3 pl-10">
-                      <span className="text-gray-700 text-lg font-medium capitalize">
+                      <span className="text-gray-700 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium capitalize">
                         {data.accountUsed.branchAddress}
                       </span>{" "}
                       <br />
@@ -152,10 +152,10 @@ const PaymentDetails = () => {
                       </span>
                     </td>
 
-                    <td className="pl-10 py-3 text-lg  text-red-600">
+                    <td className="pl-10 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg  text-red-600">
                       {data.clientData.customerId}
                     </td>
-                    <td className="pl-10 py-3 text-lg  text-red-600">
+                    <td className="pl-10 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg  text-red-600">
                       {data.clientData.orderId}
                     </td>
 

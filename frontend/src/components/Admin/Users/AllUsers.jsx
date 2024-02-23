@@ -47,15 +47,15 @@ const AllUsers = () => {
         <table className="w-full table-auto text-md text-left">
           <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
             <tr>
-              <th className="py-4 px-2 text-lg font-medium">Sr. </th>
-              <th className="py-4 px-6 text-lg font-medium">Name</th>
-              <th className="py-4 px-6 text-lg font-medium">Date</th>
-              <th className="py-4 px-6 text-lg font-medium">Customer Id</th>
-              <th className="py-4 px-6 text-lg font-medium">Company</th>
-              <th className="py-4 px-6 text-lg font-medium">Phone</th>
-              <th className="py-4 px-6 text-lg font-medium">City</th>
-              <th className="py-4 px-6 text-lg font-medium">Postal Code</th>
-              <th className="py-4 px-6 text-lg font-medium"></th>
+              <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Name</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Date</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Customer_Id</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Company</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Phone</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">City</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Postal_Code</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium"></th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">

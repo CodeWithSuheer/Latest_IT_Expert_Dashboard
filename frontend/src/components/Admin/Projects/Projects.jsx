@@ -159,20 +159,20 @@ const Projects = () => {
             <table className="w-full table-auto text-md text-left overflow-auto">
               <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
                 <tr>
-                  <th className="py-4 px-6 text-lg font-medium">Sr. </th>
-                  <th className="py-4 px-6 text-lg font-medium">Name</th>
-                  <th className="py-4 px-6 text-lg font-medium">
-                    Project Title
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Name</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Project_Title
                   </th>
-                  <th className="py-4 px-6 text-lg font-medium">Customer ID</th>
-                  <th className="py-4 px-6 text-lg font-medium">Order Id</th>
-                  <th className="py-4 px-6 text-lg font-medium">Deadline</th>
-                  <th className="py-4 px-6 text-lg font-medium">Amount</th>
-                  <th className="py-4 px-6 text-lg font-medium">
-                    Invoice Status
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Customer_ID</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Order_Id</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Deadline</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Amount</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Invoice_Status
                   </th>
-                  <th className="py-4 px-6 text-lg font-medium">
-                    View Details
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    View_Details
                   </th>
                 </tr>
               </thead>
@@ -214,7 +214,7 @@ const Projects = () => {
                           to={`/adminpanel/projectdetails/${data.id}`}
                           onClick={() => window.scroll(0, 0)}
                         >
-                          View Details
+                          View_Details
                         </Link>
                       </td>
                     </td>
