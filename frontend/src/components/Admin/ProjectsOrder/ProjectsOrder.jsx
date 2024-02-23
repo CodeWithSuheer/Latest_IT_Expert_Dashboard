@@ -77,9 +77,9 @@ const ProjectsOrder = () => {
             <tbody className="text-gray-600 divide-y">
               {ProjectOrders.map((data, idx) => (
                 <tr key={idx}>
-                  <td className="px-6 py-3 text-lg ">{idx + 1}</td>
-                  <td className="px-6 py-3 text-lg ">{data.companyName}</td>
-                  <td className="px-6 py-3 text-lg ">{data.projectTitle}</td>
+                  <td className="px-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg ">{idx + 1}</td>
+                  <td className="px-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg ">{data.companyName}</td>
+                  <td className="px-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg ">{data.projectTitle}</td>
                   <td className="px-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg  text-red-600">{data.customerId}</td>
                   <td className="px-6 py-3 text-md">{new Date(data.startDate).toLocaleDateString()}</td>
                   <td className="px-6 py-3 ">{new Date(data.Deadline).toLocaleDateString()}</td>
