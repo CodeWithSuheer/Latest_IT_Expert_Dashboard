@@ -147,7 +147,7 @@ const  loading = useSelector((state) => state.contactForms.loading);
           <table className="contact_table w-full table-auto text-sm text-left overflow-x-auto">
             <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
               <tr>
-                <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr</th>
+                <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
                 <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Name</th>
                 <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Date</th>
                 <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Ref Number</th>
