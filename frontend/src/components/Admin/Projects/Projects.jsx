@@ -159,39 +159,39 @@ const Projects = () => {
             <table className="w-full table-auto text-md text-left overflow-auto">
               <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
                 <tr>
-                  <th className="py-4 px-6 text-lg font-medium">Sr. </th>
-                  <th className="py-4 px-6 text-lg font-medium">Name</th>
-                  <th className="py-4 px-6 text-lg font-medium">
-                    Project Title
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Name</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Project_Title
                   </th>
-                  <th className="py-4 px-6 text-lg font-medium">Customer ID</th>
-                  <th className="py-4 px-6 text-lg font-medium">Order Id</th>
-                  <th className="py-4 px-6 text-lg font-medium">Deadline</th>
-                  <th className="py-4 px-6 text-lg font-medium">Amount</th>
-                  <th className="py-4 px-6 text-lg font-medium">
-                    Invoice Status
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Customer_ID</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Order_Id</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Deadline</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Amount</th>
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    Invoice_Status
                   </th>
-                  <th className="py-4 px-6 text-lg font-medium">
-                    View Details
+                  <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">
+                    View_Details
                   </th>
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
                 {filteredProjects.map((data, idx) => (
                   <tr key={idx}>
-                    <td className="px-6 py-4 ">{idx + 1}</td>
-                    <td className="px-6 py-4 ">{data.customerName}</td>
-                    <td className="px-6 py-4  text-red-600">
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{idx + 1}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.customerName}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg text-red-600">
                       {data.projectTitle}
                     </td>
-                    <td className="px-6 py-4  text-red-600">
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg text-red-600">
                       {data.customerId}
                     </td>
-                    <td className="px-6 py-4 text-md">{data.orderId}</td>
-                    <td className="px-6 py-4 ">
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.orderId}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">
                       {new Date(data.Deadline).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 ">{data.amount}</td>
+                    <td className="px-6 py-4 md:text-md lg:text-md xl:text-md 2xl:text-lg">{data.amount}</td>
                     <td className="pl-6 py-4">
                       <span
                         className={`px-5 py-2 rounded-full capitalize font-semibold text-sm ${
@@ -214,7 +214,7 @@ const Projects = () => {
                           to={`/adminpanel/projectdetails/${data.id}`}
                           onClick={() => window.scroll(0, 0)}
                         >
-                          View Details
+                          View_Details
                         </Link>
                       </td>
                     </td>

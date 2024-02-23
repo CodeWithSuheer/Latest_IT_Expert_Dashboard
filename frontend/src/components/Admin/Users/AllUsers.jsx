@@ -47,15 +47,15 @@ const AllUsers = () => {
         <table className="w-full table-auto text-md text-left">
           <thead className="text-[#242435] bg-[#F7F7F7] font-medium border-b">
             <tr>
-              <th className="py-4 px-2 text-lg font-medium">Sr. </th>
-              <th className="py-4 px-6 text-lg font-medium">Name</th>
-              <th className="py-4 px-6 text-lg font-medium">Date</th>
-              <th className="py-4 px-6 text-lg font-medium">Customer Id</th>
-              <th className="py-4 px-6 text-lg font-medium">Company</th>
-              <th className="py-4 px-6 text-lg font-medium">Phone</th>
-              <th className="py-4 px-6 text-lg font-medium">City</th>
-              <th className="py-4 px-6 text-lg font-medium">Postal Code</th>
-              <th className="py-4 px-6 text-lg font-medium"></th>
+              <th className="py-4 px-2 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Sr. </th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Name</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Date</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Customer_Id</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Company</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Phone</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">City</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium">Postal_Code</th>
+              <th className="py-4 px-6 md:text-md lg:text-md xl:text-md 2xl:text-lg font-medium"></th>
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
@@ -67,7 +67,7 @@ const AllUsers = () => {
 
 
                 <td className="gap-x-3 px-6 whitespace-nowrap">
-                  <span className="text-gray-700 text-md font-medium capitalize">
+                  <span className="text-gray-700 md:text-sm lg:text-md xl:text-lg font-medium capitalize">
                     {`${data.firstName || ""} ${data?.lastName || ""}`}
                   </span>{" "}
                   <br />
@@ -77,20 +77,20 @@ const AllUsers = () => {
                 </td>
 
                 
-                <td className="pr-3 py-3 text-lg pl-6">
+                <td className="pr-3 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {new Date(data.createdAt).toLocaleDateString()}
                 </td>
-                <td className="pr-3 py-3 text-lg pl-6">
+                <td className="pr-3 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.customerId || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.companyName || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.phoneNumber || ""}
                 </td>
-                <td className="pr-6 py-3 text-lg pl-6">{data?.city || ""}</td>
-                <td className="pr-6 py-3 text-lg pl-6">
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">{data?.city || ""}</td>
+                <td className="pr-6 py-3 md:text-md lg:text-md xl:text-md 2xl:text-lg pl-6">
                   {data?.postalCode || ""}
                 </td>
               </tr>
